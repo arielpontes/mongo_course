@@ -1,0 +1,17 @@
+ version: '2'
+ services:
+   db:
+     image: mongo
+     container_name: m101p_mongo
+   web:
+     build: .
+     container_name: m101p_web
+     stdin_open: true
+     tty: true
+     command: bash
+     volumes:
+       - .:/code
+     ports:
+       - "8000:8000"
+     depends_on:
+       - db
